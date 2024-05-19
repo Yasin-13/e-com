@@ -1,9 +1,7 @@
-import Image from "next/image";
 import { EnvelopeOpenIcon } from "@radix-ui/react-icons"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import { Button } from "@/components/ui/button"
-import Google from "next-auth/providers/google";
 
 export default function Home() {
   const { data: session } = useSession()
