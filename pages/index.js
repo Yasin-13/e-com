@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center max-w-4xl mx-auto">
-      <h1 className="text-4xl text-bold max-w-lg text-center">Welcome to Admin Side Website</h1>
+      <h1 className="text-4xl text-bold max-w-lg text-center">Welcome To Admin Side Website</h1>
       <p className="font-medium my-2">Admin privilege/account required to access</p>
       <Button onClick={() => signIn('google')}>
         <EnvelopeOpenIcon className="mr-2 h-4 w-4" /> Login with Email
