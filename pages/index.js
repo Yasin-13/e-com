@@ -14,7 +14,7 @@ export default function Home() {
       <div className="text-center sm:text-left">
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back,{session.user.name}! </h1>
 
-        <p className="mt-1.5 text-sm text-gray-500">Let's write a new blog post! 🎉</p>
+        <p className="mt-1.5 text-sm text-gray-500">Let's write a new blog post! </p>
       </div>
 
       <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
