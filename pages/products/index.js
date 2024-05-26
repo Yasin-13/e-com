@@ -1,8 +1,23 @@
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import axios from "axios";
 
 export default function Product()
 {
-    return<>
+
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const[products,setProducts]=useState([]);
+  const[loading,setLoading]=useState(true);
+  useEffect(() => {
+    axios.get('/api/products').then(res =>{
+      setProducts(res.data);
+      setLoading(false);
+    })
+  }, [])
+      return<>
     <header>
   <div className="mx-auto max-w-screen-xl px-4 py-5 sm:px-6 sm:py-10 lg:px-8">
     <div className="sm:flex sm:items-center sm:justify-between">
@@ -32,7 +47,48 @@ export default function Product()
 
 <hr class="my-2 h-px border-0 bg-gray-300" />
 <div className="mx-auto max-w-screen-xl px-4 py-5 sm:px-6 sm:py-10 lg:px-8">
-    no products available
+{products.length === 0 ?(
+  <p>No products</p>
+):(
+
+  
+<div class="">
+  <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+    <thead class="bg-gray-50">
+      <tr>
+      <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Price</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+      </tr>
+    </thead>
+    {products.map((product, index) =>(
+      
+
+<tbody class="divide-y divide-gray-100 border-t border-gray-100" key={Product._id}>
+      <tr>
+        <th class="px-6 py-4 font-medium text-gray-900">{index + 1}</th>
+        <td class="px-6 py-4">{product.title}</td>
+        <td class="px-6 py-4">{product.description}</td>
+        <td class="px-6 py-4">
+          {formatPrice(product.price)}
+        </td>
+        <td class="flex justify-end gap-4 px-6 py-4 font-mediu">
+          <a href="" className="text-red-500">Delete</a>
+          <a href="" class="text-black">Edit</a></td>
+      </tr>
+      
+    </tbody>
+
+))}
+
+    
+  </table>
+</div>
+
+)}
 </div>
 
     </>
